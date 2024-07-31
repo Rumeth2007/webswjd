@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+</head>
+<body>
+    <!--Initialization-->
+    <div class="text-container">
+        <div class="text" id="text1">Welcome to <span  style="color: brown;">Auto Report</span></div>
+        <div class="text" id="text2">Let's setup the Class data.</div>
+    </div>
+
+    <!--Enter Class Name-->
+    <div class="E-C-N-container">
+        <h1 class="ECN-text-input-label">Class Name</h1>
+        <input type="text" id="ENC-text-input-id" placeholder="Enter your Class Name" autocomplete="off" maxlength="10">
+        <div class="ECN-after-submit-div">
+            <h1>Class Name: <span id="ECN-after-submitiontext"></span></h1>
+        </div>
+        <button id="ECN-Enter-Btn" class="btn">Enter</button>
+        <div class="ENC-buttons">
+            <button id="ECN-Edit-Name" class="btn , transition" >Edit Name</button>
+            <button id="ECN-Next" class="btn , transition">Next</button>
+        </div>
+        <h6 class="instruction">Maximum characters 12.</h6>
+    </div>
+
+    <!--Enter Students Name-->
+    <div class="E-S-N-container">
+        <h1 class="ESN-text-input-label">Student Name
+        </h1>
+        <input type="text" id="ESN-text-input-id" placeholder="Enter a Name" autocomplete="off"  maxlength="30">
+        <h5 style="color: rgb(126, 126, 126);">Enter student name according to the Class number</h5>
+        <div class="ESN-Class-Number-Container">
+            <h1 id="ESN-Class-Number"></h1>
+        </div>
+        <div class="ESN-Class-Number-Label-Container">
+            <p>Class Number</p>
+            
+        </div>
+        <p class="instruction-on-submitting">Press Enter To Submit</p>
+        <div id="ESN-Notification">
+            <div id="ESN-Class-Number-Notification"><p class="ESN-Class-Number-Notification">
+            </p>
+        </div>
+            <p id="ESN-Student-Notification"></p>
+            <div class="Submited-label">Submitted</div>
+        </div>
+        <div class="ESN-buttons">
+            <button id="ESN-preview" class="btn , transition">
+                Preview
+            </button>
+        </div>
+    </div>
+
+    <!--Preview Class Data-->
+    <div class="PCD-container-1">
+    <div class="PCD-container">
+        <table id="PCD-table">
+            <thead>
+                <tr>
+                    <th>Class Number</th>
+                    <th colspan="2" style="border-left: 1px black solid;">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be added here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="PCD-btn-holder">
+    <button id="PCD-Add-more-Names-btn" class="btn">Add Names</button>
+    <button id="PCD-Corection-btn" class="btn">Correction</button>
+    <button id="PCD-Next-btn" class="btn">Next</button>
+    </div>
+
+    <!--Correction Section-->
+    <div class="PCD-popUpCorrection">
+        <div class="PCD-nameLabelCorrection">Correction</div>
+        
+        <input type="number" min="1" maxlength="2" id="PCD-correction-class-number">
+        <input type="text" maxlength="30" id="PCD-correction-student-name" autocomplete="off">
+        <div><button id="PCD-correction-back" class="btn">Back</button></div>
+    </div>
+    <!--Notification-->
+    <div id="PCD-Notification">
+        <div id="PCD-Class-Number-Notification"><p class="PCD-Class-Number-Notification">
+        </p>
+    </div>
+        <p id="PCD-Student-Notification"></p>
+        <div class="Submited-label">Corrected</div>
+    </div>
+    </div>
+
+
+    <!--Enter Sujects-->
+    <div class="ES-Container">
+        <h3 class="PremadeTemplateLabel">Premade Subject Templates</h3>
+        <div class="template" id="EM-Grade-1-5">Grade <br> 1-5
+        
+        <p class="ES-levatating-card">7-Subjects</p>
+        </div>
+        <div class="template" id="EM-Grade-6-9">Grade <br> 6-9
+            <p class="ES-levatating-card" >13-Subjects</p></div>
+        <div class="template" id="EM-Grade-10-11">Grade <br>
+             10-11
+             <p class="ES-levatating-card">9-Subjects</p></div>
+        <div class="template">A/L
+            <p class="ES-levatating-card">Coming Soon</p>
+        </div>
+        <div class="template" id="EM-Add-Subjects">Add <br>Subjects
+            <p class="ES-levatating-card">Start New</p></div>
+    </div>
+     <!--Subject Table-->
+     <div class="PST-Real-Container">
+        <div class="PST-Title-Label">Subject Manager</div>
+     <div class="PST-Container">
+        
+        <table id="subjectsTable">
+            <thead>
+                <tr id="SubjecttableHeader">
+                    <th colspan="2" id="PST-table-Header"></th>
+                    
+                </tr>
+            </thead>
+            <tbody id="SubjecttableBody">
+                <!-- Table rows will be inserted here -->
+                 
+            </tbody>
+        </table>
+     </div>
+     <input type="text" placeholder="Enter New Subject" id="PST-new-Input" autocomplete="off" maxlength="15">
+     <div class="PST-btn-Holder">
+        <button class="btn" id="PST-back-btn">
+            Back
+        </button>
+        <button class="btn" id="PST-next-btn">
+            Next
+        </button>
+     </div>
+    </div>
+
+    <!--Group Basket Subjects-->
+    <div class="GroupBasketSubjects-Container">
+        <!--Pop Up-->
+        <div class="AddpopUp-Basket-Subjects">
+            <div class="GBS-PopUp-Container">
+                <div class="GBS-Topic">Add Basket Groups</div>
+                <div class="GBS-table-holder">
+                <table id="GroupTable">
+                    <thead>
+                        <tr id="GrouptableHeader">
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="GrouptableBody">
+                        <!-- Table rows will be inserted here -->
+                         
+                    </tbody>
+                </table>
+            </div>
+                <input type="text" id="GBS-Input" class="AddGroupBasketSubject" maxlength="20" placeholder="Enter New Group" autocomplete="off">
+            </div>
+        </div>
+
+
+        <div class="GBS-Topic">Group Basket Subjects</div>
+
+        <!--Basket Subject-->
+        <div class="GBS-Topic-Holder">
+        <div class="BS-topic">Basket Subjects</div>
+        <div class="GBS-Basket-Subject-Table">
+
+            
+            <div class="GBS-Basket-Subject-Real" id="Basket-Subject">
+                
+                <!--Divs-->
+            </div>
+        </div>
+        </div>
+        <!--Selected Group-->
+        <div class="GBS-Topic-Holder" id="GBS-Selected-Group">
+            <div class="BS-topic" id="GBS-LabelToChange">Drop a Group to Edit</div>
+            <div class="GBS-Basket-Subject-Table">
+    
+                
+                <div class="GBS-Basket-Subject-Real" id="Selected-Subject">
+                <!--Divs-->
+                    
+                </div>
+            </div>
+            </div>
+        <!--Basket Groups-->
+        <div class="GBS-Topic-Holder" id="GBS-Basket-Group">
+            <div class="BS-topic">Basket Groups</div>
+            <div class="GBS-Basket-Subject-Table">
+    
+                
+                <div class="GBS-Basket-Subject" >
+                    <div class="BS-block-Subject" id="GBS-Add-New-Group">+</div>
+                    <div class="GBS-Basket-Subject-Real" id="DivToAddGroups"><!--Divs--></div>
+                </div>
+            </div>
+            </div>
+        
+        <div class="GBS-btn-holder">
+        <button id="GBS-Back-Btn" class="btn">Subject Manager</button>
+        <button id="GBS-Next-Btn" class="btn">Next</button>
+        </div>
+    </div>
+
+    <!--Assign-Baskets-Subjects-Container-->
+    <div class="Assign-Baskets-Subjects-Container">
+        <div class="ABS-dropdown-container">
+            <div id="ABS-dropdown-topic-label">Select a Group</div>
+            <div class="block-holder">
+                <div id="ABS-Basket-Groups"></div>
+            </div>
+        </div>
+        <div class="ABS-dropdown-container-2">
+            <div id="ABS-dropdown-topic-label">Basket Subjects</div>
+            <div class="block-holder">
+                <div id="ABS-Basket-Subject"></div>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="GBS-Topic">Assign Baskets Subjects</div>
+            <div id="cover">Select a Group to Start Assigning</div>
+            <div id="controlsContainer">
+                <div class="name-section">
+                    <div class="assigned-light" id="assigned-notification">Assigned</div>
+                    <div class="LabelOfControl">Student Name / Class Number</div>
+                    <div class="Name-Content" id="ABS-name">Vikum Devinda</div>
+                    <div class="Class-Number" id="ABS-number">10</div>
+                </div>
+                <div class="Subject-Section">
+                    
+                    
+                    <div class="Subject-Label" id="assigned-subject">Press the Number Relavent to the Subject to Assign</div>
+                    <div class="ABS-btn-Holder"><button class="btn" id="ABS-next">Next</button></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--Enter Marks-->
+    <div class="EMmain-container">
+        <div class="EnterMarks-Container">
+        <div class="GBS-Topic" id="Subjects-Label">Enter Marks</div>
+        <div class="EM-table-Holder">
+        <table id="EnterMarksTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Class-Number</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="EM-ControlContainer">
+        <div class="btn" id="EmpreviousBtn">Previous</div>
+        <div class="Em-Inout-Senction">
+            <div class="Marks-Container"><input type="text" id="Em-Marks"placeholder='Marks' autocomplete="off"><div class="Marks-Label">Enter Marks</div></div>
+            <div class="EM-NAMEandNumber-Holder">
+                <input type="text" id="EM-Input" placeholder="Name">
+                <input type="number" id="EM-classNumber">
+            </div>
+        </div>
+        <div class="btn" id="EmNextBtn">Next</div>
+    </div>
+    <div class="Subject-Selector">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20" height="20" viewBox="0 0 256 256" xml:space="preserve">
+
+            <defs>
+            </defs>
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                <path d="M 90 24.25 c 0 -0.896 -0.342 -1.792 -1.025 -2.475 c -1.366 -1.367 -3.583 -1.367 -4.949 0 L 45 60.8 L 5.975 21.775 c -1.367 -1.367 -3.583 -1.367 -4.95 0 c -1.366 1.367 -1.366 3.583 0 4.95 l 41.5 41.5 c 1.366 1.367 3.583 1.367 4.949 0 l 41.5 -41.5 C 89.658 26.042 90 25.146 90 24.25 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+            </g>
+        </svg>
+        <div class="Subject-Selector-content">
+                <div class='em-SubjectHolder'></div>
+        </div>
+        <div class="btn" id="Em-DoneBtn">Done</div>
+    </div>
+    
+    </div>
+
+    <!--Special Conditions-->
+    <div class="SP-main-Container">
+        <div class="SP-Block-Container">
+            <div class="GBS-Topic">Special Conditions</div>
+            <div class="SP-block-holder">
+                <div class="SP-block" id="Critical">Critical Subject<br>Penalty</div>
+            <div class="SP-block-1">More to<br>Come</div>
+            <div class="Sp-Instructions"><div class="flotting"></div>If a student fails any main subject, their rank will drop below those who pass, even if their total score is higher. <span style="background-color: white; color: black; padding: 5px; border-radius: 5px; text-align: center;">Fail marks Will be Below 40</span>
+
+        </div>
+            </div>
+        </div>
+        <div id="SP-Pop-UP">
+            <div class="pop-up-container">
+                <div class="GBS-Topic">Critical Subject Penalty</div>
+                <div class="Sp-table-Holder">
+                    <table id="Sp-table">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="btn" id="Sp-Next">Next</div>
+    </div>
+
+
+    <!--AutoReport-->
+    <div class="AutoReportContainer">
+        <div class="Auto-Report">Auto Report</div>
+        <div class="Ar-Block" id="Report">Report</div>
+        <div class="Ar-Block" id="Class-Rank">Class Ranks</div>
+        <div class="Ar-Block" id="Subject-Rank">Subject Ranks</div>
+        <div class="Ar-Block-1">Comming <br> Soon</div>
+    </div>
+
+    <!--AutoReport Report-->
+    <div class="report-Container">
+        <div class="report-class">Report cards</div>
+        <div class="reportcard-container">
+            <div id="reportName"></div>
+            <div id="report-table-Holder">
+                <table id="student-table-report">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+                <div id="report-table-Holder-1">
+
+                </div>
+            </div>
+        </div>
+        <div class="ReportcardControl-Container">
+            <div class="NameSelectorContainer">
+                <div class="selector-label">Sudents Names</div>
+                <select class="NameSelector" id="Report-Name-Selector">
+                   <!--options goes here-->
+
+                </select>
+            </div>
+            <div class="total-Students-Container">
+                <div id="total-student"><div class="total-students-label">Total Students</div><span id="total-student">10</span></div>
+            </div>
+            <div class="btn" id="report-back-btn">Back</div>
+        </div>
+    </div>
+
+
+    <!--Class Ranks-->
+    <div class="Class-Rank-container">
+        <div class="-ranks-container">
+            <div class="one-conainer" id="second">
+                <div class="Number" id="first"></div>
+                <div id="one-rank-name" class="rank-name"></div>
+            </div>
+            <div class="one-conainer" >
+                <div class="Number" id="seconds"></div>
+                <div id="second-rank-name" class="rank-name"></div>
+            </div>
+            <div class="one-conainer">
+                <div class="Number" id="third"></div>
+                <div id="third-rank-name" class="rank-name"></div>
+            </div>
+        </div>
+        <div class="-ranks-container">
+            <div class="class-ranks-label">Class Ranks</div>
+            <div id="rank-table-holder">
+                <table id="rankTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="btn" id="class-rank-back">Back</div>
+    </div>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
